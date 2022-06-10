@@ -64,8 +64,8 @@
                     </tbody>
                 </table>
                 <div class="noidung-thanhtoan">
-                    <h6>Nội dung chuyển khoản của bạn là: </h6>
-                    <h1>${TRANS.name}</h1>
+                    <h6>Nội dung chuyển khoản của bạn là: Email của bạn và tên viết tắt các khóa học</h6>
+                    <h3>Ví dụ bạn mua khóa học Lý Thuyết Thông tin thì sẽ là: ${TRANS.email} LTTT </h3>
                 </div>
             </div>
             <div class="thongbao-thanhtoan">

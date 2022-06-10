@@ -1,9 +1,11 @@
 package api;
 
+import dao.ActorDAO;
 import dao.CartDAO;
 import dao.CourseDAO;
 import dto.CartDTO;
 import dto.RenderBuyModal;
+import model.ActorModel;
 import model.CartModel;
 import model.CourseModel;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -14,12 +16,17 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(urlPatterns = {"/cart-get","/cart-post","/cart-put"})
 public class CartAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        List<CartModel> ds = new CartDAO().findAll();
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writeValue(response.getOutputStream(), ds);
     }
 
     @Override

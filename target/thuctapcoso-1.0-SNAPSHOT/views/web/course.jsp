@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minh Hieu Education</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/template/web/courses/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/template/web/courses/asset/style.css">
 <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/template/web/home/css/styles.css">--%>
@@ -69,10 +69,7 @@
             </div>
         </div>
         <div class="col-lg-5 video-intro">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/hgs9LY4KyXM"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/q36eV65TRGg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
     <div class="row">
@@ -111,12 +108,12 @@
         <!-- Courses list -->
         <div class="col-lg-4">
             <div class="course-content">
-                <h2>Course Content !</h2>
+                <h2>Nội dung bài giảng !</h2>
                 <div class="course-cost">
                     <ul>
-                        <li>15 sections</li>
-                        <li>146 lectures</li>
-                        <li>14h 42m total length</li>
+                        <li>Hệ thống bài giảng chi tiết</li>
+                        <li>Nội dung đi vào rõ trọng tâm</li>
+                        <li>Giúp người học nắm bắt bản chất</li>
                     </ul>
                 </div>
             </div>
@@ -129,8 +126,7 @@
         <!-- Video Course -->
         <div class="col-lg-8">
             <div class="course" id="linkVd">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/tKOeLZ2i24o" title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/q36eV65TRGg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <!-- Courses list -->
         </div>

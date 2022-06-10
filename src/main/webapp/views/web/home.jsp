@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Minh Hieu Education</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/template/web/home/assets/img/icons/favicon.ico"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/template/web/home/assets/vender/bootstrap/css/bootstrap.min.css">
@@ -93,7 +93,7 @@
         <img class="masthead-avatar mb-5" src="${pageContext.request.contextPath}/template/web/home/assets/img/avataaars.svg" alt="..." />
         <!-- Masthead Heading-->
         <c:if test="${not empty USERMODEL}">
-            <h1 class="masthead-heading text-uppercase mb-0">Hello, ${USERMODEL.name}</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Xin chào, ${USERMODEL.name}</h1>
         </c:if>
         <c:if test="${empty USERMODEL}">
             <h1 class="masthead-heading text-uppercase mb-0">Minh Hieu Education</h1>
@@ -139,8 +139,8 @@
         </div>
         <!-- About Section Content-->
         <div class="row">
-            <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-            <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+            <div class="col-lg-4 ms-auto"><p class="lead">Chúng tôi tạo ra giá trị kiến thức cho các bạn, đồng thời cũng là nơi để các bạn chia sẻ những kiến thức về công nghệ hữu ích tới tất cả mọi người.</p></div>
+            <div class="col-lg-4 me-auto"><p class="lead">Bạn có thể học tất cả các khóa học của chúng tôi được xây dựng một cách bài bản, rõ ràng nhất </p></div>
         </div>
         <!-- About Section Button-->
         <!-- <div class="text-center mt-4">
@@ -169,7 +169,7 @@
             </div>
         </div>
         <span class="video-by-youtube">
-                    <iframe width="1000" height="700" style="margin: 0 auto;" src="https://www.youtube.com/embed/mVtwHhdjUrc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="1000" height="700" src="https://www.youtube.com/embed/q36eV65TRGg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </span>
     </div>
 </section>
@@ -241,12 +241,12 @@
                                     </div>
 
                                     <div class="flex-sb-m w-full p-b-30">
-                                        <div class="contact100-form-checkbox">
-                                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                                            <label class="label-checkbox100" for="ckb1">
-                                                Remember me
-                                            </label>
-                                        </div>
+<%--                                        <div class="contact100-form-checkbox">--%>
+<%--                                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">--%>
+<%--                                            <label class="label-checkbox100" for="ckb1">--%>
+<%--                                                Remember me--%>
+<%--                                            </label>--%>
+<%--                                        </div>--%>
                                         <c:if test="${not empty error}">
                                             <div class="contact100-form-checkbox">
                                                 <label style="color: red;font-size: 15px">
@@ -372,9 +372,23 @@
     $(document).ready(function(){
         loadAll();
     });
-
     function loadAll(){
-        //Đối tượng JS
+        damua='Đã mua'
+        $.ajax({
+            url: 'http://localhost:8080/thuctapcoso_war_exploded/cart-get',
+            type: 'get',
+            dataType: 'json',
+            // data: JSON.stringify(data),//chuyển đối tượng JS thành JSON
+            contentType: 'application/json',
+            success: function(json){
+                console.log(json);
+                cartGlobal = json;
+            },
+            error: function(){
+                alert("Không cập nhật dang ki thành công !");
+            }
+        });
+
         $.ajax({
             url: 'http://localhost:8080/thuctapcoso_war_exploded/load-all',
             type: 'get',
@@ -385,7 +399,7 @@
                 let test = $("#test");
                 let html = '';
                 for (let i = 0;i < json.length; i++){
-                    if(json[i].status==1){
+                    if(json[i].status==1) {
                     let course = '<div class="col-md-6 col-lg-4 mb-5">'+
                         '<div class="portfolio-item mx-auto"  style="border: 1px solid #ccc;">'+
                         '<a href="/thuctapcoso_war_exploded/trang-chu?action='+json[i].idcourse+'" class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">'+
@@ -398,7 +412,10 @@
                             'Price:'+
                             '<span>'+json[i].cost+'</span>'+
                         '</div>'+
-                    '</div>'+
+                        '</div>'+
+                        '<div class="detail-box">'+
+                            '<label for="">'+damua+'</label>'+
+                        '</div>'+
                 '</div>'+
                 '</div>';
                     html += course;
@@ -416,6 +433,7 @@
         let email = $("input[name='email']").val()!='' ? $("input[name='email']").val() : undefined;
         let password =$("input[name='passwor']").val()!='' ? $("input[name='password']").val() : undefined;
         let name = $("input[name='name']").val()!='' ? $("input[name='name']").val() : undefined;
+        let repass =$("input[name='re-password']").val()!='' ? $("input[name='re-password']").val() : undefined;
         let  gender='';
         jQuery("input[name='genderAdd']").each(function (){
             if(this.checked===true){
@@ -424,33 +442,41 @@
         });
         gender = gender!=''?gender:undefined;
         let role='User';
-        let data={};
-        data['email']=email;
-        data['password']=password;
-        data['name']=name;
-        data['birth']=undefined;
-        data['phone']=undefined;
-        data['address']=undefined;
-        data['gender']=gender;
-        data['role']=role;
-        console.log(data);
-        $.ajax({
-            url: '/thuctapcoso_war_exploded/admin-post',
-            type: 'post',
-            dataType: 'json',
-            data: JSON.stringify(data),//chuyển đối tượng JS thành JSON
-            contentType: 'application/json',
-            success: function(json){
-                if(json=='success'){
-                    alert("Đăng kí thành công !");
-                }else {
-                    alert(json);
+        if(!email || !password || !name || !repass || !gender){
+            alert("Vui lòng điền đầy đủ thông tin đăng kí !");
+        }else if(email.includes('@')==false || email.includes('com')==false){
+            alert("Email không hợp lệ !");
+        }else if(password != repass){
+            alert("Vui lòng xác thực lại mật khẩu");
+        }else {
+            let data = {};
+            data['email'] = email;
+            data['password'] = password;
+            data['name'] = name;
+            data['birth'] = undefined;
+            data['phone'] = undefined;
+            data['address'] = undefined;
+            data['gender'] = gender;
+            data['role'] = role;
+            console.log(data);
+            $.ajax({
+                url: '/thuctapcoso_war_exploded/admin-post',
+                type: 'post',
+                dataType: 'json',
+                data: JSON.stringify(data),//chuyển đối tượng JS thành JSON
+                contentType: 'application/json',
+                success: function (json) {
+                    if (json == 'success') {
+                        alert("Đăng kí thành công !");
+                    } else {
+                        alert(json);
+                    }
+                },
+                error: function () {
+                    alert("Sự số hệ thống !");
                 }
-            },
-            error: function(){
-                alert("Sự số hệ thống !");
-            }
-        });
+            });
+        }
     }
 </script>
 </body>

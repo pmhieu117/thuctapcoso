@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Charts</title>
+    <title>Admin</title>
 
     <!-- Custom fonts for this template-->
     <link href="${pageContext.request.contextPath}/template/admin/admin-home/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -577,6 +577,7 @@
                 success: function(json){
                     if(json==='success'){
                         alert("Cập nhật thành công !");
+                        $(location).attr('href', '/thuctapcoso_war_exploded/views/admin/admin-course.jsp');
                     }else {
                         alert(json);
                     }
